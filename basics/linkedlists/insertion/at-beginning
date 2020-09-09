@@ -4,9 +4,14 @@ struct node{
 	int data;
 	node * next;
 };
+int insert(){
+	
+}
 int main(){
 	//creating linked list
-	node * head = NULL;
+	//insert at head
+	node * head = NULL; //head naam ka pointer with null value dabba white hissa greean
+	
 	int l,value;
 	cout<<"Enter length of inkedlist"<<endl;
 	cin>>l;
@@ -18,4 +23,15 @@ int main(){
 	temp->next = head;
 	head = temp;
     }
+    //display linkedlist
+    if(head!=NULL){
+    	node * temp = head;
+    	while(temp != NULL){
+    		cout<<temp->data;
+    		temp = temp->next;
+		}
+	}
+	else{
+		cout<<"empty";
+	}
 }
