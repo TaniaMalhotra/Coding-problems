@@ -4,43 +4,41 @@ struct node{
 	int data;
 	node * next;
 };
-int insert(){
-	
-}
 int main(){
-	//insert at end
+	//creating linked list by joining at end
 	node * head = NULL;
-	
-	int l,value;
-	cout<<"Enter length of linkedlist"<<endl;
+	cout<<"Enter number of nodes"<<endl;
+	int l,val;
 	cin>>l;
-	for(int i = 0; i<l; i++){
-	cout<<"Enter the value of data"<<endl;
-	cin>>value;
-	node * temp = new node;
-	temp->data = value;
-	temp->next = NULL;
-	if(head == NULL){
-	 head = temp;
-    }
-    else{
-    	node * temp1 = head;
-    	while(temp1->next != NULL){
-    		temp1 = temp1->next;
+	for( int i = 1; i<=l ; i++)
+	{
+		cout<<"enter data value of node "<<i<<endl;
+		cin>>val;
+		node * temp = new node;
+		temp->data = val;
+		temp->next = NULL;
+		if( head == NULL)
+		{
+			head = temp;
 		}
-		temp1->next = temp;
-	}
-}
-    //display linkedlist
-    if(head!=NULL){
-    	node * temp = head;
-    	while(temp != NULL){
-    		cout<<temp->data;
-    		temp = temp->next;
+		else
+		{
+			node * temp1 = head;
+			while(temp1-> next != NULL)
+			{
+				temp1 = temp1->next;
+			}
+			temp1->next = temp;
 		}
+		
 	}
-	else{
-		cout<<"empty";
+	//display
+	node * display = head;
+	while(display != NULL)
+	{
+		cout<<display->data;
+		display = display->next;
 	}
+	
+	
 }
-
