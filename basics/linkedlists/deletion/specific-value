@@ -1,1 +1,14 @@
 
+//delete specific node
+	int del_after;
+	cout<<"enter value of node to be deleted"<<endl;
+	cin>>del_after;
+	node * del = head;
+	node * prev = NULL;
+	while(del != NULL && del -> data != del_after)
+	{
+    prev = del;
+	del = del->next;
+    }
+	prev->next = del->next;
+	delete del;
