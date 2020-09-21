@@ -1,0 +1,221 @@
+#include<iostream>
+using namespace std;
+
+ struct node
+{
+    int data;
+    struct node *next;
+};
+struct node*head=NULL;
+struct node*temp=new node;
+void insertBeginning(int num)
+{
+	node * temp = new node;
+	temp->next=NULL;
+	temp->data=num;
+	node * temp1 = head;
+	head = temp;
+	head->next=temp1;
+	
+}
+void delEnd(){
+	node * temp = head;
+	node * prev=NULL;
+	while(temp->next!=NULL){
+		prev = temp;
+		temp=temp->next;
+	}
+	prev->next=NULL;
+	delete temp;
+}
+
+void print()
+{
+    temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<"\t";
+        temp=temp->next;
+    }
+    
+}
+void insertEnd(int n){
+	node * temp1 = new node;
+	node * temp = head;
+	temp1->data=n;
+	temp1->next=NULL;
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=temp1;
+}
+
+  
+
+void createList()
+{
+	cout<<"enter number of elements in list";
+	int n;
+	cin>>n;
+	int val;
+	for(int i =0;i<n;i++){
+	cout<<"enter value of node";
+	cin>>val;
+	node * temp = new node;
+	temp->next = NULL;
+	temp->data = val;
+	if(head==NULL){
+		head=temp;
+	}
+	else{
+		node * temp2 = head;
+		while(temp2->next!=NULL){
+			temp2 = temp2->next;
+		}
+		temp2->next=temp;
+	}
+}
+}
+void insertPos(int pos,int n){
+	node * temp1 = new node;
+	temp1->next = NULL;
+	temp1->data = n;
+	int z = 1;
+	node * temp = head;
+	while(z!=pos && temp!=NULL){
+		temp = temp->next;
+		z++;
+	}
+	temp1->next = temp->next;
+	temp->next=temp1;
+}
+void delPos(int n){
+	node * prev = NULL;
+	int z = 1;
+	node * temp = head;
+	while(z!=n && temp!=NULL){
+		prev = temp;
+		temp = temp->next;
+		z++;
+	}
+	prev->next=temp->next;
+	delete temp;
+}
+void delBeginning(){
+	node * temp = head;
+	head = head->next;
+	delete temp;
+}
+void searchNode(int n)
+{
+	node * temp = head;
+	int z = 1;
+	while(temp!=NULL){
+		
+		cout<<temp->data<<endl;
+		if(temp->data == n){
+			cout<<"Element found at position:"<<z<<endl;
+			break;
+		}		
+		temp=temp->next;
+		z++;
+	}
+	if(temp==NULL)
+	cout<<"not found"<<endl;
+}
+int main()
+{
+    createList();
+    cout<<"The initial list is\n";
+    print();
+    cout<<endl;
+    cout<<endl;
+    while(1)
+    {
+    cout<<"Enter the choice:\n";
+    cout<<"1-Insertion at the beginning.\n";
+    cout<<"2-insertion at the end\n";
+    cout<<"3-Insertion in between nodes (mention the position after which you want to input element\n";
+    cout<<"4-Deletion from the beginning\n";
+    cout<<"5-Deletion from the end\n";
+    cout<<"6-Deletion of a specific node, mention the position\n";
+    cout<<"7-to print the position of a node\n";
+    cout<<"8-Display all the node values\n";
+    cout<<"9-Exit\n";
+    int ch;
+    int n;
+    cin>>ch;
+        switch(ch)
+    {
+        case 1:
+            cout<<"Enter the number to be inserted\n";
+            cin>>n;
+            insertBeginning(n);
+            cout<<"The updated list is\n";
+            print();
+            cout<<endl;
+            break;
+        case 2:
+            cout<<"Enter the number to be inserted\n";
+            cin>>n;
+            insertEnd(n);
+            cout<<"The updated list is\n";
+            print();
+            cout<<endl;
+            break;
+        case 3:
+            cout<<"Enter the position after which you would like to input\n";
+            int pos;
+            cin>>pos;
+            cout<<"Enter the number you want to input\n";
+            cin>>n;
+            insertPos(pos,n);
+            cout<<"The updated list is\n";
+            print();
+            cout<<endl;
+            break;
+        case 4:
+            cout<<"The updated list is\n";
+            delBeginning();
+            print();
+            cout<<endl;
+            break;
+        case 5:
+            cout<<"The updated list is\n";
+            delEnd();
+            print();
+            cout<<endl;
+            break;
+        case 6:
+            cout<<"Enter the position of the element you would like delete\n";
+            cin>>n;
+            delPos(n);
+            cout<<"The updated list is\n";
+            cout<<endl;
+            print();
+            break;
+        case 7:
+            cout<<"Enter the number you would like to search\n";
+            cin>>n;
+            searchNode(n);
+            cout<<endl;
+            break;
+        case 8:
+            cout<<"The list is\n";
+            print();
+            cout<<endl;
+            cout<<endl;
+            break;
+        case 9:
+            cout<<"Exiting\n";
+            exit(0);
+            break;
+        default:
+            cout<<"Sorry, incorrect choice "<<endl;
+    }
+    }
+}
+
+
+
