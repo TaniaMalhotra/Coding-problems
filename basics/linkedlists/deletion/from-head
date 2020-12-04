@@ -1,0 +1,48 @@
+ #include<iostream>
+using namespace std;
+struct node{
+	int data;
+	node * next;
+};
+int main(){
+	//creating linked list by joining at end
+	node * head = NULL;
+	cout<<"Enter number of nodes"<<endl;
+	int l,val,new_val;
+	cin>>l;
+	for( int i = 1; i<=l ; i++)
+	{
+		cout<<"enter data value of node "<<i<<endl;
+		cin>>val;
+		node * temp = new node;
+		temp->data = val;
+		temp->next = NULL;
+		if( head == NULL)
+		{
+			head = temp;
+		}
+		else
+		{
+			node * temp1 = head;
+			while(temp1-> next != NULL)
+			{
+				temp1 = temp1->next;
+			}
+			temp1->next = temp;
+		}
+		
+	}
+ //delete from head
+    node * del_temp = head;
+    head = head->next;
+	delete del_temp;
+  
+//display
+	node * display = head;
+	while(display != NULL)
+	{
+		cout<<display->data;
+		display = display->next;
+	}
+ }
+	
